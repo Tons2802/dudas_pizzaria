@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duda's Pizzaria & Hamburgueria | Peça agora no WhatsApp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forno-preto: #191210;
+    --forno-preto-2: #241a17;
+    --brasa: #e2472b;
+    --brasa-escura: #b8321a;
+    --queijo: #f4b93c;
+    --creme: #fbf3e7;
+    --creme-2: #f0e2ca;
+    --verde-manjericao: #4f6b3f;
+    --sombra: rgba(20,10,6,0.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--creme);
+    color:var(--forno-preto);
+    font-family:'Archivo',sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:900;
+    line-height:0.95;
+    letter-spacing:-0.01em;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--forno-preto);
+    color:var(--creme);
+    padding:10px 0;
+    font-size:13px;
+    letter-spacing:0.04em;
+  }
+  .topbar .container{display:flex;align-items:center;justify-content:space-between;}
+  .topbar-badge{display:flex;align-items:center;gap:8px;color:var(--queijo);font-weight:600;}
+  .topbar-badge svg{width:14px;height:14px;flex-shrink:0;}
+  .topbar-cta{
+    background:var(--brasa);color:#fff;padding:7px 16px;border-radius:100px;
+    font-weight:700;font-size:12.5px;white-space:nowrap;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(ellipse at 30% -10%, #3a2018 0%, var(--forno-preto) 55%);
+    color:var(--creme);
+    padding:64px 0 0;
+    overflow:hidden;
+  }
+  .hero .container{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--queijo);
+    font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--brasa);box-shadow:0 0 0 4px rgba(226,71,43,0.25);}
+  .hero h1{
+    font-size:clamp(38px, 6vw, 64px);
+    color:#fff;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--brasa);
+    background:linear-gradient(180deg, transparent 62%, rgba(226,71,43,0.35) 62%);
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:17px;
+    color:var(--creme-2);
+    max-width:440px;
+    line-height:1.6;
+  }
+  .hero-actions{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--brasa);color:#fff;
+    padding:17px 30px;border-radius:100px;
+    font-weight:800;font-size:16px;
+    display:inline-flex;align-items:center;gap:10px;
+    box-shadow:0 10px 30px -8px rgba(226,71,43,0.6);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -6px rgba(226,71,43,0.7);}
+  .btn-primary svg{width:20px;height:20px;flex-shrink:0;}
+  .btn-ghost{
+    border:1.5px solid rgba(251,243,231,0.3);
+    color:var(--creme);
+    padding:16px 26px;border-radius:100px;
+    font-weight:700;font-size:15px;
+  }
+  .hero-trust{
+    margin-top:30px;
+    display:flex;align-items:center;gap:14px;
+    font-size:13.5px;color:var(--creme-2);
+  }
+  .stars{color:var(--queijo);letter-spacing:2px;font-size:15px;}
+
+  .hero-visual{
+    position:relative;
+    aspect-ratio:1/1.05;
+    border-radius:28px;
+    background:
+      radial-gradient(circle at 50% 40%, rgba(226,71,43,0.35), transparent 60%),
+      linear-gradient(160deg, #2b1c16, #140d0a);
+    border:1px solid rgba(251,243,231,0.08);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .hero-visual-inner{
+    width:78%;aspect-ratio:1/1;border-radius:50%;
+    background:linear-gradient(135deg, var(--queijo), #d98a1f);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    box-shadow: inset 0 8px 30px rgba(0,0,0,0.25);
+    position:relative;
+  }
+  .hero-visual-inner span{
+    font-family:'Fraunces',serif;font-weight:800;
+    color:var(--forno-preto);
+    font-size:15px;line-height:1.3;
+    padding:0 30px;
+  }
+  .hero-visual-badge{
+    position:absolute;top:18px;right:18px;
+    background:var(--forno-preto);color:var(--creme);
+    border:1px solid rgba(251,243,231,0.15);
+    padding:8px 14px;border-radius:100px;font-size:12px;font-weight:700;
+    display:flex;align-items:center;gap:6px;
+  }
+  .hero-visual-badge .dot{width:6px;height:6px;border-radius:50%;background:#4ad66d;}
+
+  .hero-bottom-fade{
+    height:70px;
+    background:linear-gradient(180deg, transparent, var(--creme));
+    margin-top:56px;
+  }
+
+  /* ---------- marquee de prova social ---------- */
+  .marquee-wrap{
+    background:var(--brasa-escura);
+    color:var(--creme);
+    padding:11px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    border-top:1px solid rgba(0,0,0,0.15);
+    border-bottom:1px solid rgba(0,0,0,0.15);
+  }
+  .marquee{
+    display:inline-flex;
+    animation:scroll 26s linear infinite;
+  }
+  .marquee span{
+    padding:0 28px;font-weight:700;font-size:13.5px;letter-spacing:0.03em;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .marquee span::after{content:"•";opacity:0.5;margin-left:28px;}
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  /* ---------- seção destaques / forno ---------- */
+  .section{padding:88px 0;}
+  .section-head{max-width:600px;margin-bottom:48px;}
+  .eyebrow{
+    color:var(--brasa);font-weight:800;font-size:13px;
+    letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;display:block;
+  }
+  .section-head h2{font-size:clamp(28px,4vw,42px);}
+  .section-head p{margin-top:14px;color:#5b4c42;font-size:16px;line-height:1.6;}
+
+  .forno-frame{
+    position:relative;
+    border-radius:120px 120px 24px 24px;
+    background:linear-gradient(180deg, var(--forno-preto-2), var(--forno-preto));
+    padding:70px 40px 46px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .forno-frame::before{
+    content:"";
+    position:absolute;top:0;left:50%;transform:translate(-50%,-46%);
+    width:140px;height:140px;border-radius:50%;
+    background:radial-gradient(circle, var(--brasa) 0%, var(--brasa-escura) 55%, transparent 78%);
+    box-shadow:0 0 60px 10px rgba(226,71,43,0.4);
+  }
+  .forno-item{
+    background:rgba(251,243,231,0.04);
+    border:1px solid rgba(251,243,231,0.08);
+    border-radius:16px;
+    padding:26px 22px;
+    color:var(--creme);
+  }
+  .forno-item .icon{
+    width:40px;height:40px;border-radius:10px;
+    background:var(--queijo);color:var(--forno-preto);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:16px;font-weight:900;font-size:17px;
+  }
+  .forno-item h3{font-size:19px;margin-bottom:8px;font-weight:700;}
+  .forno-item p{font-size:14px;color:var(--creme-2);line-height:1.55;}
+
+  /* ---------- cardápio ---------- */
+  .cardapio-tabs{display:flex;gap:10px;margin-bottom:36px;flex-wrap:wrap;}
+  .tab{
+    padding:10px 20px;border-radius:100px;font-weight:700;font-size:14px;
+    border:1.5px solid var(--creme-2);background:#fff;color:var(--forno-preto);
+    cursor:pointer;
+  }
+  .tab.active{background:var(--forno-preto);color:var(--creme);border-color:var(--forno-preto);}
+
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .menu-card{
+    background:#fff;
+    border:1px solid #e9ddc8;
+    border-radius:18px;
+    overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .menu-card:hover{transform:translateY(-4px);box-shadow:0 16px 30px -14px var(--sombra);}
+  .menu-card-img{
+    aspect-ratio:4/3;
+    background:
+      repeating-linear-gradient(135deg, #f3e2c1, #f3e2c1 10px, #eed9b2 10px, #eed9b2 20px);
+    display:flex;align-items:center;justify-content:center;
+    color:#a8894f;font-weight:700;font-size:13px;letter-spacing:0.04em;
+    position:relative;
+  }
+  .menu-card-tag{
+    position:absolute;top:10px;left:10px;
+    background:var(--brasa);color:#fff;font-size:11px;font-weight:800;
+    padding:4px 10px;border-radius:100px;letter-spacing:0.03em;
+  }
+  .menu-card-body{padding:18px 18px 20px;}
+  .menu-card-body h3{font-family:'Fraunces',serif;font-weight:700;font-size:19px;margin-bottom:6px;}
+  .menu-card-body p{font-size:13.5px;color:#6b5c50;line-height:1.5;min-height:40px;}
+  .menu-card-foot{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-top:14px;padding-top:14px;border-top:1px dashed #e2d3b5;
+  }
+  .price{font-weight:800;font-size:18px;font-family:'Fraunces',serif;}
+  .price small{font-size:11px;color:#9a8a76;font-weight:600;display:block;font-family:'Archivo',sans-serif;}
+  .add-btn{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--forno-preto);color:var(--creme);
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;font-weight:400;
+    transition:background .15s ease;
+  }
+  .add-btn:hover{background:var(--brasa);}
+
+  .menu-note{
+    margin-top:28px;padding:16px 20px;background:#fff7e9;border:1px dashed var(--queijo);
+    border-radius:14px;font-size:13.5px;color:#7a5c1e;display:flex;gap:10px;align-items:flex-start;
+  }
+
+  /* ---------- como pedir ---------- */
+  .steps{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    position:relative;
+  }
+  .step{padding:0 24px;position:relative;}
+  .step:not(:last-child)::after{
+    content:"";position:absolute;top:26px;right:-4px;width:calc(100% - 40px);
+    border-top:2px dashed var(--creme-2);
+  }
+  .step-num{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--forno-preto);color:var(--queijo);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:800;font-size:20px;
+    margin-bottom:18px;position:relative;z-index:1;
+  }
+  .step h3{font-size:19px;margin-bottom:8px;}
+  .step p{font-size:14px;color:#5b4c42;line-height:1.6;}
+
+  /* ---------- depoimentos ---------- */
+  .depo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .depo-card{
+    background:#fff;border:1px solid #e9ddc8;border-radius:18px;padding:26px;
+  }
+  .depo-stars{color:var(--queijo);font-size:15px;letter-spacing:2px;margin-bottom:14px;}
+  .depo-card p{font-size:14.5px;line-height:1.6;color:#3d3128;margin-bottom:16px;}
+  .depo-author{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#6b5c50;}
+  .depo-avatar{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--brasa);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;
+  }
+
+  /* ---------- CTA final ---------- */
+  .cta-final{
+    background:linear-gradient(160deg, var(--brasa) 0%, var(--brasa-escura) 100%);
+    color:#fff;border-radius:32px;
+    padding:64px 48px;
+    text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .cta-final::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 80% 0%, rgba(255,255,255,0.15), transparent 55%);
+  }
+  .cta-final h2{font-size:clamp(28px,4.5vw,44px);color:#fff;position:relative;}
+  .cta-final p{margin-top:14px;font-size:16px;color:rgba(255,255,255,0.85);position:relative;max-width:480px;margin-left:auto;margin-right:auto;}
+  .cta-final .btn-primary{
+    background:var(--forno-preto);margin-top:30px;position:relative;
+    box-shadow:0 14px 30px -8px rgba(0,0,0,0.4);
+  }
+  .cta-final .btn-primary:hover{background:#000;}
+  .cta-final-meta{
+    margin-top:24px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;
+    font-size:13px;color:rgba(255,255,255,0.8);position:relative;
+  }
+
+  /* ---------- footer ---------- */
+  footer{background:var(--forno-preto);color:var(--creme-2);padding:44px 0 26px;}
+  footer .container{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+  .footer-brand{font-family:'Fraunces',serif;font-weight:800;font-size:22px;color:#fff;}
+  .footer-brand span{color:var(--brasa);}
+  footer .foot-info{font-size:13px;line-height:1.9;color:rgba(251,243,231,0.55);}
+  .foot-bottom{
+    margin-top:30px;padding-top:20px;border-top:1px solid rgba(251,243,231,0.1);
+    font-size:12px;color:rgba(251,243,231,0.4);text-align:center;
+  }
+
+  /* ---------- botão flutuante mobile ---------- */
+  .fab{
+    position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+    z-index:60;width:calc(100% - 32px);max-width:420px;
+    display:none;
+  }
+  .fab a{
+    background:var(--brasa);color:#fff;
+    padding:16px;border-radius:100px;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    font-weight:800;font-size:15px;
+    box-shadow:0 12px 30px -6px rgba(0,0,0,0.4);
+  }
+
+  @media (max-width: 860px){
+    .hero .container{grid-template-columns:1fr;}
+    .hero-visual{max-width:340px;margin:0 auto;}
+    .forno-frame{grid-template-columns:1fr;border-radius:60px 60px 24px 24px;padding:56px 24px 30px;}
+    .menu-grid{grid-template-columns:1fr 1fr;}
+    .depo-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;gap:32px;}
+    .step:not(:last-child)::after{display:none;}
+    .cta-final{padding:48px 24px;}
+    .fab{display:block;}
+    body{padding-bottom:90px;}
+  }
+  @media (max-width: 560px){
+    .menu-grid{grid-template-columns:1fr;}
+    .topbar-cta{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-badge">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" opacity="0"/><circle cx="12" cy="12" r="10"/></svg>
+      Delivery aberto agora · pedidos em até 40 min
+    </div>
+    <a href="#pedir" class="topbar-cta">Pedir no WhatsApp →</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <div class="hero-eyebrow"><span class="dot"></span> DUDA'S · PIZZARIA & HAMBURGUERIA</div>
+      <h1>O sabor artesanal<br>que vai te <em>conquistar</em></h1>
+      <p class="hero-sub">Massa de fermentação lenta, recheio generoso e aquele hambúrguer que não cabe na boca. Peça agora e chega quentinho na sua casa.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/message/EXSSKU6OF2E7N1" class="btn-primary" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.6-13.58zm-5.55 12.2h-.01a6.58 6.58 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 1 1 5.6 3.09zm3.6-4.95c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4s.2-.23.29-.35.13-.2.19-.33.03-.25-.02-.35-.44-1.06-.6-1.45c-.16-.38-.32-.33-.44-.33h-.37a.72.72 0 0 0-.52.24 2.2 2.2 0 0 0-.68 1.63c0 .96.7 1.89.8 2.02s1.37 2.1 3.33 2.94c.46.2.83.32 1.11.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94s.16-.86.11-.94-.18-.13-.38-.23z"/></svg>
+          Pedir agora no WhatsApp
+        </a>
+        <a href="#cardapio" class="btn-ghost">Ver cardápio</a>
+      </div>
+      <div class="hero-trust">
+        <span class="stars">★★★★★</span>
+        <span>491 seguidores no Instagram · avaliação da vizinhança</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-badge"><span class="dot"></span> Aberto agora</div>
+      <div class="hero-visual-inner">
+        <span>[ foto do produto carro-chefe aqui ]<br>ex: pizza saindo do forno</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom-fade"></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>🍕 Massa artesanal fermentada 48h</span>
+    <span>🛵 Delivery rápido até 40 min</span>
+    <span>🧀 Recheio na medida certa</span>
+    <span>🍔 Hambúrguer artesanal 160g</span>
+    <span>📍 Suzano e região</span>
+    <span>🍕 Massa artesanal fermentada 48h</span>
+    <span>🛵 Delivery rápido até 40 min</span>
+    <span>🧀 Recheio na medida certa</span>
+    <span>🍔 Hambúrguer artesanal 160g</span>
+    <span>📍 Suzano e região</span>
+  </div>
+</div>
+
+<!-- POR QUE DUDA'S -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Por que Duda's</span>
+      <h2>Comida de forno, feita como em casa</h2>
+      <p>Sem atalho industrial. Cada pedido sai na hora, com ingredientes selecionados e aquele capricho que só dá pra sentir no primeiro pedaço.</p>
+    </div>
+    <div class="forno-frame">
+      <div class="forno-item">
+        <div class="icon">🔥</div>
+        <h3>Assada na hora</h3>
+        <p>Cada pizza vai ao forno só depois que você pede. Sem espera de estoque, sem massa requentada.</p>
+      </div>
+      <div class="forno-item">
+        <div class="icon">⏱</div>
+        <h3>Chega rápido</h3>
+        <p>Rota otimizada de entrega para sua região, com pedido pronto em média em 40 minutos.</p>
+      </div>
+      <div class="forno-item">
+        <div class="icon">💬</div>
+        <h3>Pedido sem enrolação</h3>
+        <p>Fala direto com a gente pelo WhatsApp, escolhe o sabor e pronto. Sem app, sem cadastro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARDÁPIO -->
+<section class="section" id="cardapio" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Cardápio</span>
+      <h2>Escolha o seu favorito</h2>
+      <p>Uma seleção dos mais pedidos. Cardápio completo com todos os sabores disponível no WhatsApp.</p>
+    </div>
+
+    <div class="cardapio-tabs">
+      <div class="tab active">Pizzas</div>
+      <div class="tab">Hambúrgueres</div>
+      <div class="tab">Bebidas</div>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img"><span class="menu-card-tag">Mais pedida</span>[ foto do produto ]</div>
+        <div class="menu-card-body">
+          <h3>Pizza Duda's Especial</h3>
+          <p>Descrição do recheio aqui — molho, queijo, e ingredientes de destaque.</p>
+          <div class="menu-card-foot">
+            <div class="price">R$ 00,00<small>tamanho grande</small></div>
+            <div class="add-btn">＋</div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">[ foto do produto ]</div>
+        <div class="menu-card-body">
+          <h3>Pizza Calabresa Artesanal</h3>
+          <p>Calabresa fatiada, cebola roxa e azeitona, no ponto certo de queijo.</p>
+          <div class="menu-card-foot">
+            <div class="price">R$ 00,00<small>tamanho grande</small></div>
+            <div class="add-btn">＋</div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img"><span class="menu-card-tag">Novidade</span>[ foto do produto ]</div>
+        <div class="menu-card-body">
+          <h3>Duda's Burger</h3>
+          <p>Blend artesanal 160g, queijo derretido e molho da casa no pão brioche.</p>
+          <div class="menu-card-foot">
+            <div class="price">R$ 00,00<small>combo individual</small></div>
+            <div class="add-btn">＋</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-note">
+      🧾 <span>Preços e fotos ilustrativos — aguardando aprovação do cardápio completo com o cliente antes da publicação final.</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMO PEDIR -->
+<section class="section" style="background:#fff5e4;">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Do pedido ao seu portão em 3 passos</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Chama no WhatsApp</h3>
+        <p>Clica no botão, escolhe seu sabor favorito e confirma o endereço direto na conversa.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>A gente prepara na hora</h3>
+        <p>Seu pedido vai pro forno assim que confirmado — nada fica esperando de véspera.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Sai quentinho pra sua casa</h3>
+        <p>Entrega rápida, embalagem cuidada, e aquele cheirinho que já entra pela porta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Quem já pediu</span>
+      <h2>A vizinhança aprova</h2>
+    </div>
+    <div class="depo-grid">
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p>"[Espaço para depoimento real de cliente — pedir print de avaliação ou mensagem do WhatsApp]"</p>
+        <div class="depo-author"><div class="depo-avatar">C</div> Cliente da região</div>
+      </div>
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p>"[Espaço para depoimento real de cliente — pedir print de avaliação ou mensagem do WhatsApp]"</p>
+        <div class="depo-author"><div class="depo-avatar">C</div> Cliente da região</div>
+      </div>
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p>"[Espaço para depoimento real de cliente — pedir print de avaliação ou mensagem do WhatsApp]"</p>
+        <div class="depo-author"><div class="depo-avatar">C</div> Cliente da região</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="section" id="pedir" style="padding-top:0;">
+  <div class="container">
+    <div class="cta-final">
+      <h2>Bateu a fome?</h2>
+      <p>Peça agora pelo WhatsApp e receba sua pizza ou hambúrguer artesanal quentinho, direto na sua porta.</p>
+      <a href="https://wa.me/message/EXSSKU6OF2E7N1" class="btn-primary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.6-13.58zm-5.55 12.2h-.01a6.58 6.58 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 1 1 5.6 3.09zm3.6-4.95c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4s.2-.23.29-.35.13-.2.19-.33.03-.25-.02-.35-.44-1.06-.6-1.45c-.16-.38-.32-.33-.44-.33h-.37a.72.72 0 0 0-.52.24 2.2 2.2 0 0 0-.68 1.63c0 .96.7 1.89.8 2.02s1.37 2.1 3.33 2.94c.46.2.83.32 1.11.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94s.16-.86.11-.94-.18-.13-.38-.23z"/></svg>
+        Chamar no WhatsApp
+      </a>
+      <div class="cta-final-meta">
+        <span>📞 (11) 97565-4838</span>
+        <span>⏱ Pedidos até 40 min</span>
+        <span>📍 Entrega em Suzano e região</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div>
+      <div class="footer-brand">Duda's <span>.</span></div>
+      <p class="foot-info" style="margin-top:10px;">Pizzaria | Hamburgueria<br>O sabor artesanal que vai te conquistar</p>
+    </div>
+    <div class="foot-info">
+      Instagram: @dudas.spizzaria<br>
+      WhatsApp: (11) 97565-4838<br>
+      Peça agora e surpreenda-se
+    </div>
+  </div>
+  <div class="foot-bottom container">
+    Landing page criada por AXIOM Estrutura Digital — conteúdo de cardápio e fotos pendentes de aprovação do cliente.
+  </div>
+</footer>
+
+<!-- FAB mobile -->
+<div class="fab">
+  <a href="https://wa.me/message/EXSSKU6OF2E7N1" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.6-13.58zm-5.55 12.2h-.01a6.58 6.58 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 1 1 5.6 3.09z"/></svg>
+    Pedir no WhatsApp
+  </a>
+</div>
+
+</body>
+</html>
